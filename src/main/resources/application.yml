@@ -1,1 +1,11 @@
-
+spring:
+  liquibase:
+    enabled: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/MillerGmbH
+    username: root
+    password: BagsBunny7
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#    ddl-auto: none

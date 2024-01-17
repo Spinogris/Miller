@@ -21,6 +21,28 @@ public class User {
     private UUID userId;
     private String userName;
     private String userLastName;
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    //    @ManyToOne
     private UserRole userRole;
     private String userPhoneNumber;
 
