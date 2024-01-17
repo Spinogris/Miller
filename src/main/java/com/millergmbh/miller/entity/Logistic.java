@@ -1,9 +1,7 @@
 package com.millergmbh.miller.entity;
 
-import com.millergmbh.miller.entity.enums.UserRole;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,15 +14,16 @@ import java.util.UUID;
 @Setter
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
-public class User {
+public class Logistic {
     @Id
     @UuidGenerator
-    private UUID userId;
-    private String userName;
-    private String userLastName;
-    private UserRole userRole;
-    private String userPhoneNumber;
+    private UUID autoId;
+
+    private String autoName;
+
+    public Logistic() {
+        super();
+    }
 
     @Override
     public int hashCode() {
@@ -46,10 +45,7 @@ public class User {
         return super.toString();
     }
 
-    @ManyToOne
-    private Department department;
+    private String status;
 
-    @ManyToOne
-    private Service service;
 
 }
