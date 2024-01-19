@@ -1,51 +1,37 @@
 package com.millergmbh.miller.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.UuidGenerator;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 public class Logistic {
-    @Id
-    @UuidGenerator
+
     private UUID autoId;
 
     private String autoName;
 
-    public Logistic() {
-        super();
+    private String status;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Logistic logistic = (Logistic) o;
+        return Objects.equals(autoId, logistic.autoId) && Objects.equals(autoName, logistic.autoName) && Objects.equals(status, logistic.status);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(autoId, autoName, status);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    private String status;
-
-
 }

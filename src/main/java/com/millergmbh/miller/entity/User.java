@@ -2,14 +2,11 @@ package com.millergmbh.miller.entity;
 
 import com.millergmbh.miller.entity.enums.UserRole;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.UuidGenerator;
-
+import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -18,8 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    @Id
-    @UuidGenerator
+
     private UUID userId;
     private String userName;
     private String userLastName;
@@ -27,29 +23,15 @@ public class User {
     private String userPhoneNumber;
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId) && Objects.equals(userName, user.userName) && Objects.equals(userLastName, user.userLastName) && userRole == user.userRole && Objects.equals(userPhoneNumber, user.userPhoneNumber);
+    }
+
+    @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(userId, userName, userLastName, userRole, userPhoneNumber);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    @ManyToOne
-    private Department department;
-
-    @ManyToOne
-    private Service service;
-
 }
