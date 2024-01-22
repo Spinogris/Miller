@@ -1,11 +1,12 @@
 package com.millergmbh.miller.entity;
 
 import com.millergmbh.miller.entity.enums.EnumServices;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.*;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -13,13 +14,23 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
+@Table(name = "services")
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Service {
-
+    @Id
+    @Column(name = "service_id")
     private UUID serviceId;
 
+    @Column(name = "service_name")
+    private String serviceName;
+
     private EnumServices enumServices;
+
+    private Department department;
+
+    private List<User> users;
 
     @Override
     public boolean equals(Object o) {
@@ -33,11 +44,6 @@ public class Service {
     public int hashCode() {
         return Objects.hash(serviceId, enumServices, department, users);
     }
-
-    private Department department;
-
-    private List<User> users;
-
 
 
 }

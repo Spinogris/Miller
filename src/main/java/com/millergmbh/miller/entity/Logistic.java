@@ -1,10 +1,10 @@
 package com.millergmbh.miller.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.*;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -12,14 +12,19 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
+@Table(name = "logistic")
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Logistic {
-
+    @Id
+    @Column(name = "auto_id")
     private UUID autoId;
 
+    @Column(name = "auto_name")
     private String autoName;
 
+    @Column(name = "auto_status")
     private String status;
 
     @Override

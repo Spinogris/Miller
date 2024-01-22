@@ -1,29 +1,36 @@
 package com.millergmbh.miller.entity;
 
 import com.millergmbh.miller.entity.enums.DepartmentRole;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.*;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "DepartmentRole")
+@Table(name = "department")
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Department {
 
-    List<User> users;
-
-    List<Service> services;
-
+    @Id
+    @Column(name = "dep_id")
     private UUID departmentId;
+
     private String departmentName;
+
     private DepartmentRole departmentRole;
+
+    private List<User> users;
+
+    private List<Service> services;
 
     @Override
     public boolean equals(Object o) {
