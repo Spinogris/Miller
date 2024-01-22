@@ -24,6 +24,7 @@ public class Department {
     @Column(name = "dep_id")
     private UUID departmentId;
 
+    @Column(name = "dep_name")
     private String departmentName;
 
     private DepartmentRole departmentRole;
