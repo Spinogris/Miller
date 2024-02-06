@@ -1,10 +1,7 @@
 package com.millergmbh.miller.entity;
 
 import com.millergmbh.miller.entity.enums.DepartmentRole;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -27,9 +24,10 @@ public class Department {
     @Column(name = "dep_name")
     private String departmentName;
 
+    @OneToOne()
     private DepartmentRole departmentRole;
 
-    private List<User> users;
+    private List<Account> users;
 
     private List<Service> services;
 

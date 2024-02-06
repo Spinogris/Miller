@@ -30,7 +30,7 @@ public class Service {
 
     private Department department;
 
-    private List<User> users;
+    private List<Account> users;
 
     @Override
     public boolean equals(Object o) {
