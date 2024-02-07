@@ -1,10 +1,7 @@
 package com.millergmbh.miller.entity;
 
 import com.millergmbh.miller.entity.enums.EnumServices;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -19,17 +16,23 @@ import java.util.UUID;
 @NoArgsConstructor
 @ToString
 public class Service {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "service_id")
     private UUID serviceId;
 
     @Column(name = "service_name")
     private String serviceName;
 
-    private EnumServices enumServices;
+    private EnumServices enumServices; // не помню для чего создал, может позже удалю
 
+    @OneToOne
+    @JoinColumn(name = "dep_id")
     private Department department;
 
+    @OneToMany
+    @JoinColumn(name = "user_id")
     private List<Account> users;
 
     @Override
@@ -37,12 +40,19 @@ public class Service {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Service service = (Service) o;
-        return Objects.equals(serviceId, service.serviceId) && enumServices == service.enumServices && Objects.equals(department, service.department) && Objects.equals(users, service.users);
+        return Objects.equals(serviceId, service.serviceId)
+                && enumServices == service.enumServices
+                && Objects.equals(department, service.department)
+                && Objects.equals(users, service.users);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(serviceId, enumServices, department, users);
+        return Objects.hash(
+                serviceId,
+                enumServices,
+                department,
+                users);
     }
 
 

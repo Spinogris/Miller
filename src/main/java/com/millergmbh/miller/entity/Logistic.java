@@ -1,9 +1,6 @@
 package com.millergmbh.miller.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Objects;
@@ -17,7 +14,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @ToString
 public class Logistic {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "auto_id")
     private UUID autoId;
 
@@ -32,11 +31,16 @@ public class Logistic {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Logistic logistic = (Logistic) o;
-        return Objects.equals(autoId, logistic.autoId) && Objects.equals(autoName, logistic.autoName) && Objects.equals(status, logistic.status);
+        return Objects.equals(autoId, logistic.autoId)
+                && Objects.equals(autoName, logistic.autoName)
+                && Objects.equals(status, logistic.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(autoId, autoName, status);
+        return Objects.hash(
+                autoId,
+                autoName,
+                status);
     }
 }
