@@ -33,7 +33,7 @@ public class Department {
     private List<Account> users;
 
     @OneToMany
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name = "service_id", referencedColumnName = "service_id")
     private List<Service> services;
 
     @Override
