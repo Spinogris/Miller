@@ -28,11 +28,11 @@ public class Service {
     private EnumServices enumServices; // не помню для чего создал, может позже удалю
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "dep_id", referencedColumnName = "dep_id")
+    @JoinColumn(name = "dep_id", referencedColumnName = "department.dep_id")
     private Department department;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "users.user_id")
     private List<Account> users;
 
     @Override

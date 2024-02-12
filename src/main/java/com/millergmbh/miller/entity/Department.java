@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@Entity(name = "DepartmentRole")
+@Entity
 @Table(name = "department")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,11 +29,11 @@ public class Department {
     private DepartmentRole departmentRole;
 
     @OneToMany
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "users.user_id")
     private List<Account> users;
 
     @OneToMany
-    @JoinColumn(name = "service_id", referencedColumnName = "service_id")
+    @JoinColumn(name = "service_id", referencedColumnName = "service.service_id")
     private List<Service> services;
 
     @Override

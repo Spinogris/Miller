@@ -53,11 +53,11 @@ public class Account {
     private UserRole userRole;
 
     @OneToOne
-    @JoinColumn(name = "dep_id")
+    @JoinColumn(name = "dep_id", referencedColumnName = "department.dep_id")
     private Department department;
 
     @OneToOne
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name = "service_id", referencedColumnName = "service.service_id")
     private Service service;
 
     @Override
