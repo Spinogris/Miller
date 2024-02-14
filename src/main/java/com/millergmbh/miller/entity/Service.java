@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -33,7 +34,7 @@ public class Service {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "users.user_id")
-    private List<Account> users;
+    private Set<Account> users;
 
     @Override
     public boolean equals(Object o) {
@@ -41,18 +42,14 @@ public class Service {
         if (o == null || getClass() != o.getClass()) return false;
         Service service = (Service) o;
         return Objects.equals(serviceId, service.serviceId)
-                && enumServices == service.enumServices
-                && Objects.equals(department, service.department)
-                && Objects.equals(users, service.users);
+                && enumServices == service.enumServices;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
                 serviceId,
-                enumServices,
-                department,
-                users);
+                enumServices);
     }
 
 

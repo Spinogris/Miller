@@ -1,11 +1,10 @@
 package com.millergmbh.miller.entity;
 
-import com.millergmbh.miller.entity.enums.DepartmentRole;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -25,36 +24,26 @@ public class Department {
     @Column(name = "dep_name")
     private String departmentName;
 
-
-    private DepartmentRole departmentRole;
-
-    @OneToMany
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "users.user_id")
-    private List<Account> users;
+    private Set<Account> users;
 
     @OneToMany
     @JoinColumn(name = "service_id", referencedColumnName = "service.service_id")
-    private List<Service> services;
+    private Set<Service> services;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Department that = (Department) o;
-        return Objects.equals(users, that.users)
-                && Objects.equals(services, that.services)
-                && Objects.equals(departmentId, that.departmentId)
-                && Objects.equals(departmentName, that.departmentName)
-                && departmentRole == that.departmentRole;
+        return Objects.equals(departmentId, that.departmentId)
+                && Objects.equals(departmentName, that.departmentName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                users,
-                services,
-                departmentId,
-                departmentName,
-                departmentRole);
+        return Objects.hash(departmentId,
+                departmentName);
     }
 }
