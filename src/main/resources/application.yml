@@ -1,11 +1,13 @@
 spring:
-  liquibase:
-    enabled: false
+  main:
+    banner-mode: off
   datasource:
     url: jdbc:mysql://localhost:3306/MillerGmbH
     username: root
     password: BagsBunny7
-#  jpa:
-#    show-sql: true
-#    hibernate:
-#    ddl-auto: none
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+#  liquibase:
+#    enabled: false

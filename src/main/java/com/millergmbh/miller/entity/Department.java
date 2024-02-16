@@ -2,6 +2,9 @@ package com.millergmbh.miller.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.type.SqlTypes;
 
 import java.util.Objects;
 import java.util.Set;
@@ -17,7 +20,8 @@ import java.util.UUID;
 public class Department {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @UuidGenerator
+    @JdbcTypeCode(SqlTypes.BINARY)
     @Column(name = "dep_id")
     private UUID departmentId;
 
@@ -25,25 +29,25 @@ public class Department {
     private String departmentName;
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "users.user_id")
-    private Set<Account> users;
+    private Set<User> users;
 
-    @OneToMany
-    @JoinColumn(name = "service_id", referencedColumnName = "service.service_id")
-    private Set<Service> services;
+    @OneToOne(mappedBy = "department")
+    @JoinColumn(name = "service_id", referencedColumnName = "service_id")
+    private Service services;
+
+    @ManyToMany(mappedBy = "departments")
+    private Set<Logistic> auto;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Department that = (Department) o;
-        return Objects.equals(departmentId, that.departmentId)
-                && Objects.equals(departmentName, that.departmentName);
+        return Objects.equals(departmentId, that.departmentId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(departmentId,
-                departmentName);
+        return Objects.hash(departmentId);
     }
 }

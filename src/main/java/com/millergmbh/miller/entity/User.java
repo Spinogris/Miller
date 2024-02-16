@@ -3,6 +3,9 @@ package com.millergmbh.miller.entity;
 import com.millergmbh.miller.entity.enums.Data;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.type.SqlTypes;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -14,10 +17,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Account {
+public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @UuidGenerator
+    @JdbcTypeCode(SqlTypes.BINARY)
     @Column(name = "user_id")
     private UUID userId;
 
@@ -49,46 +53,28 @@ public class Account {
     @Column(name = "service_accessory")
     private String serviceAccessory;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "logistic_id", referencedColumnName = "logistic_id")
     private Logistic auto;
 
     @ManyToOne
-    @JoinColumn(name = "dep_id", referencedColumnName = "department.dep_id")
+    @JoinColumn(name = "department_accessory", referencedColumnName = "dep_id")
     private Department department;
 
-    @OneToOne
-    @JoinColumn(name = "service_id", referencedColumnName = "service.service_id")
+    @ManyToOne
+    @JoinColumn(name = "service_accessory", referencedColumnName = "service_id")
     private Service service;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Account account = (Account) o;
-        return Double.compare(
-                age, account.age) == 0
-                && Objects.equals(userId, account.userId)
-                && Objects.equals(firstName, account.firstName)
-                && Objects.equals(lastName, account.lastName)
-                && Objects.equals(email, account.email)
-                && Objects.equals(userPhoneNumber, account.userPhoneNumber)
-                && birthDay == account.birthDay
-                && Objects.equals(driverCategory, account.driverCategory)
-                && Objects.equals(departmentAccessory, account.departmentAccessory)
-                && Objects.equals(serviceAccessory, account.serviceAccessory);
+        User user = (User) o;
+        return Objects.equals(userId, user.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId,
-                firstName,
-                lastName,
-                email,
-                userPhoneNumber,
-                age,
-                birthDay,
-                driverCategory,
-                departmentAccessory,
-                serviceAccessory);
+        return Objects.hash(userId);
     }
 }

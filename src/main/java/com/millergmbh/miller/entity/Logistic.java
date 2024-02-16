@@ -3,6 +3,9 @@ package com.millergmbh.miller.entity;
 import com.millergmbh.miller.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.type.SqlTypes;
 
 import java.util.*;
 
@@ -16,8 +19,9 @@ import java.util.*;
 public class Logistic {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "auto_id")
+    @UuidGenerator
+    @JdbcTypeCode(SqlTypes.BINARY)
+    @Column(name = "logistic_id")
     private UUID autoId;
 
     @Column(name = "auto_name")
@@ -27,10 +31,10 @@ public class Logistic {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @OneToMany
-    private Set<Account> user;
+    @OneToMany(mappedBy = "auto")
+    private Set<User> user;
 
-    @OneToMany
+    @ManyToMany(mappedBy = "auto")
     private Set<Department> departments;
 
     @Override
@@ -38,16 +42,11 @@ public class Logistic {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Logistic logistic = (Logistic) o;
-        return Objects.equals(autoId, logistic.autoId)
-                && Objects.equals(autoName, logistic.autoName)
-                && Objects.equals(status, logistic.status);
+        return Objects.equals(autoId, logistic.autoId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                autoId,
-                autoName,
-                status);
+        return Objects.hash(autoId);
     }
 }
