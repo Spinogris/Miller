@@ -1,0 +1,26 @@
+create database MillerGmbH;
+use MillerGmbH;
+CREATE TABLE IF NOT EXISTS department (dep_id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
+                         dep_name VARCHAR(128)
+);
+CREATE TABLE IF NOT EXISTS logistic (auto_id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
+                        auto_name VARCHAR(128),
+                        auto_status VARCHAR(128)
+);
+CREATE TABLE IF NOT EXISTS sevices (service_id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
+                        service_name VARCHAR(128)
+);
+CREATE TABLE IF NOT EXISTS user_role (role_id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
+                        role_name VARCHAR(128)
+);
+CREATE TABLE IF NOT EXISTS users (id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
+                        first_name VARCHAR(128),
+                        last_name VARCHAR(128),
+                        birth_day VARCHAR(128),
+                        age DOUBLE,
+                        email VARCHAR(128),
+                        phone_number VARCHAR(128),
+                        driver_category VARCHAR(128),
+                        department_accessory BINARY(32),
+                        service_accessory BINARY(32)
+);
