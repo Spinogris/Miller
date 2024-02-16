@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="VladyslavGorin" id="insert test data into users table">
+        <insert tableName="users">
+            <column name="user_id" value="a3501865-ac3a-4c16-bc45-a9b2163a43ff"/>
+            <column name="firs_name" value="Vlad"/>
+            <column name="last_name" value="Gorin"/>
+            <column name="email" value="g.v.d@bk.ru"/>
+            <column name="phone_number" value="+79788445317"/>
+            <column name="age" value="32"/>
+            <column name="driver_category" value="B"/>
+            <column name="department_accessory" value="a3501865-ac3a-4c16-bc45-a9b6163a43ff"/>
+            <column name="service_accessory" value="a3501865-ac3a-4c16-bc45-a9b4163a43ff"/>
+            <column name="birth_day" value="1992.01.20"/>
+            <column name="logistic_id" value="a3501865-ac3a-4c16-bc45-a9b5163a43ff"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="VladyslavGorin" id="insert test data into user_role table">
+        <insert tableName="user_role">
+            <column name="role_id" value="a3501865-ac3a-4c16-bc45-a9b3163a43ff"/>
+            <column name="role_name" value="mechanic"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="VladyslavGorin" id="insert test data into services table">
+        <insert tableName="services">
+            <column name="service_id" value="a3501865-ac3a-4c16-bc45-a9b4163a43ff"/>
+            <column name="service_name" value="montage"/>
+            <column name="dep_id" value="a3501865-ac3a-4c16-bc45-a9b6163a43ff"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="VladyslavGorin" id="insert test data into logistic table">
+        <insert tableName="logistic">
+            <column name="logistic_id" value="a3501865-ac3a-4c16-bc45-a9b5163a43ff"/>
+            <column name="auto_name" value="5557"/>
+            <column name="auto_status" value="free"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="VladyslavGorin" id="insert test data into department table">
+        <insert tableName="department">
+            <column name="dep_id" value="a3501865-ac3a-4c16-bc45-a9b6163a43ff"/>
+            <column name="dep_name" value="BSH"/>
+            <column name="service_id" value="a3501865-ac3a-4c16-bc45-a9b4163a43ff"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

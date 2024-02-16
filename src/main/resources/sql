@@ -1,13 +1,14 @@
 create database MillerGmbH;
 use MillerGmbH;
 CREATE TABLE IF NOT EXISTS department (dep_id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
-                         dep_name VARCHAR(128)
+                         dep_name VARCHAR(128),
+                         service_id BINARY(32)PRIMARY KEY
 );
-CREATE TABLE IF NOT EXISTS logistic (auto_id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS logistic (LOGISTIC_id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
                         auto_name VARCHAR(128),
                         auto_status VARCHAR(128)
 );
-CREATE TABLE IF NOT EXISTS sevices (service_id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS services (service_id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
                         service_name VARCHAR(128)
 );
 CREATE TABLE IF NOT EXISTS user_role (role_id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
@@ -23,4 +24,5 @@ CREATE TABLE IF NOT EXISTS users (id BINARY(32) AUTO_INCREMENT PRIMARY KEY,
                         driver_category VARCHAR(128),
                         department_accessory BINARY(32),
                         service_accessory BINARY(32)
+                        logistic_id BINARY(32)PRIMARY KEY
 );

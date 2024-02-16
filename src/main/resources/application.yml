@@ -9,5 +9,5 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
-#  liquibase:
-#    enabled: false
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.xml

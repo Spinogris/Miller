@@ -54,15 +54,15 @@ public class User {
     private String serviceAccessory;
 
     @ManyToOne
-    @JoinColumn(name = "logistic_id", referencedColumnName = "logistic_id")
+    @JoinColumn(name = "logistic_id", referencedColumnName = "logistic_id", insertable=false, updatable=false)
     private Logistic auto;
 
     @ManyToOne
-    @JoinColumn(name = "department_accessory", referencedColumnName = "dep_id")
+    @JoinColumn(name = "department_accessory", referencedColumnName = "dep_id", insertable=false, updatable=false)
     private Department department;
 
     @ManyToOne
-    @JoinColumn(name = "service_accessory", referencedColumnName = "service_id")
+    @JoinColumn(name = "service_accessory", referencedColumnName = "service_id", insertable=false, updatable=false)
     private Service service;
 
     @Override

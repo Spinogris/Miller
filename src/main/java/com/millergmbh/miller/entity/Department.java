@@ -32,7 +32,7 @@ public class Department {
     private Set<User> users;
 
     @OneToOne(mappedBy = "department")
-    @JoinColumn(name = "service_id", referencedColumnName = "service_id")
+    @JoinColumn(name = "service_id", referencedColumnName = "service_id", insertable=false, updatable=false)
     private Service services;
 
     @ManyToMany(mappedBy = "departments")

@@ -32,7 +32,7 @@ public class Service {
     private EnumServices enumServices; // не помню для чего создал, может позже удалю
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "dep_id", referencedColumnName = "dep_id")
+    @JoinColumn(name = "dep_id", referencedColumnName = "dep_id",insertable=false, updatable=false)
     private Department department;
 
     @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)

@@ -34,7 +34,7 @@ public class Logistic {
     @OneToMany(mappedBy = "auto")
     private Set<User> user;
 
-    @ManyToMany(mappedBy = "auto")
+    @ManyToMany
     private Set<Department> departments;
 
     @Override
