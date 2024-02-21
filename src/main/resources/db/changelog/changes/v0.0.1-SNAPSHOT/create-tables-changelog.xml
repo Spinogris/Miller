@@ -33,6 +33,9 @@
             <column name="driver_category" type="varchar(128)">
                 <constraints nullable="true"/>
             </column>
+            <column name="user_role" type="varchar(16)">
+                <constraints nullable="false"/>
+            </column>
             <column name="department_accessory" type="binary(32)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -44,14 +47,6 @@
             </column>
             <column name="logistic_id" type="binary(32)">
                 <constraints primaryKey="true" nullable="false"/>
-            </column>
-        </createTable>
-        <createTable tableName="user_role">
-            <column name="role_id" type="binary(32)">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="role_name" type="varchar(128)">
-                <constraints nullable="false" unique="true"/>
             </column>
         </createTable>
         <createTable tableName="services">

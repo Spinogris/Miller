@@ -14,17 +14,11 @@
             <column name="phone_number" value="+79788445317"/>
             <column name="age" value="32"/>
             <column name="driver_category" value="B"/>
+            <column name="user_role" value="rider"/>
             <column name="department_accessory" value="a3501865-ac3a-4c16-bc45-a9b6163a43ff"/>
             <column name="service_accessory" value="a3501865-ac3a-4c16-bc45-a9b4163a43ff"/>
             <column name="birth_day" value="1992.01.20"/>
             <column name="logistic_id" value="a3501865-ac3a-4c16-bc45-a9b5163a43ff"/>
-        </insert>
-    </changeSet>
-
-    <changeSet author="VladyslavGorin" id="insert test data into user_role table">
-        <insert tableName="user_role">
-            <column name="role_id" value="a3501865-ac3a-4c16-bc45-a9b3163a43ff"/>
-            <column name="role_name" value="mechanic"/>
         </insert>
     </changeSet>
 
