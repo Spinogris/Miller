@@ -30,7 +30,9 @@ dependencies {
     // mySQL
     implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.2.0'
     // liquibase
-    implementation group: 'org.liquibase', name: 'liquibase-core', version: '4.25.1'
+//    implementation group: 'org.liquibase', name: 'liquibase-core', version: '4.25.1'
+    // https://mvnrepository.com/artifact/com.h2database/h2
+//    implementation group: 'com.h2database', name: 'h2', version: '2.2.224'
 }
 
 tasks.named('test') {

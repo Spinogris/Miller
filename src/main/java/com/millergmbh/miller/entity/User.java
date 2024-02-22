@@ -3,27 +3,19 @@ package com.millergmbh.miller.entity;
 import com.millergmbh.miller.entity.enums.Data;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.UuidGenerator;
-import org.hibernate.type.SqlTypes;
 
 import java.util.Objects;
-import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "users")
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class User {
 
     @Id
-    @UuidGenerator
-    @JdbcTypeCode(SqlTypes.BINARY)
     @Column(name = "user_id")
-    private UUID userId;
+    private int userId;
 
     @Column(name = "first_name")
     private String firstName;
@@ -41,28 +33,27 @@ public class User {
     private double age;
 
     @Column(name = "birth_day")
-    @Enumerated(EnumType.STRING)
     private Data birthDay;
 
     @Column(name = "driver_category")
     private String driverCategory;
 
-    @Column(name = "department_accessory")
+    @Column(name = "department_id")
     private String departmentAccessory;
 
-    @Column(name = "service_accessory")
+    @Column(name = "service_id")
     private String serviceAccessory;
 
     @ManyToOne
-    @JoinColumn(name = "logistic_id", referencedColumnName = "logistic_id", insertable=false, updatable=false)
+    @JoinColumn(name = "auto_id")
     private Logistic auto;
 
     @ManyToOne
-    @JoinColumn(name = "department_accessory", referencedColumnName = "dep_id", insertable=false, updatable=false)
+    @JoinColumn(name = "department_id")
     private Department department;
 
     @ManyToOne
-    @JoinColumn(name = "service_accessory", referencedColumnName = "service_id", insertable=false, updatable=false)
+    @JoinColumn(name = "service_id")
     private Service service;
 
     @Override
