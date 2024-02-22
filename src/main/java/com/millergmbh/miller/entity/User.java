@@ -38,18 +38,12 @@ public class User {
     @Column(name = "driver_category")
     private String driverCategory;
 
-    @Column(name = "department_id")
-    private String departmentAccessory;
-
-    @Column(name = "service_id")
-    private String serviceAccessory;
-
     @ManyToOne
     @JoinColumn(name = "auto_id")
     private Logistic auto;
 
     @ManyToOne
-    @JoinColumn(name = "department_id")
+    @JoinColumn(name = "dep_id")
     private Department department;
 
     @ManyToOne

@@ -28,7 +28,6 @@ public class Logistic {
     private Set<User> user;
 
     @ManyToMany
-    @JoinColumn(name = "department_id")
     private Set<Department> departments;
 
     @Override

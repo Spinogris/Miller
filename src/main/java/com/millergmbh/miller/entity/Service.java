@@ -1,6 +1,5 @@
 package com.millergmbh.miller.entity;
 
-import com.millergmbh.miller.entity.enums.EnumServices;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,9 +20,7 @@ public class Service {
     @Column(name = "service_name")
     private String serviceName;
 
-    private EnumServices enumServices; // не помню для чего создал, может позже удалю
-
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne( mappedBy = "services", cascade = CascadeType.ALL)
     private Department department;
 
     @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
